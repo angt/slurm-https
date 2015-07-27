@@ -15,11 +15,13 @@ $ cd slurm-https
 $ go build
 ```
 
-### Run the server
+### Run
 ```sh
 $ ./create-cert.sh
 $ ./slurm-https
 ```
+By default, the server listen on :8443.
+
 ## API
 
 The API is nearly a direct mapping to [slurm.h](https://raw.githubusercontent.com/SchedMD/slurm/master/slurm/slurm.h.in).
