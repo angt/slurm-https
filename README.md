@@ -1,8 +1,8 @@
 # slurm-https
 
-**This project is an abandonned PoC.**
+A simple HTTPS API for Slurm.
 
-**Never used, never tested !**
+**This project is an abandoned PoC. Never used in production.**
 
 I put the code here, maybe one day it will be helpful to someone.
 
