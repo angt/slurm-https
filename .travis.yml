@@ -2,5 +2,10 @@ sudo: false
 
 language: go
 
+before_script:
+    - export PKG_CONFIG_PATH=/tmp/lib/pkgconfig
+    - git clone https://github.com/SchedMD/slurm
+    - cd slurm && ./autogen.sh && ./configure --disable-dependency-tracking --prefix=/tmp && make install && cd -
+
 script:
     - go build
