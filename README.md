@@ -2,10 +2,6 @@
 
 A simple HTTPS API for Slurm.
 
-**This project is an abandoned PoC. Never used in production.**
-
-I put the code here, maybe one day it will be helpful to someone.
-
 ## Quick Start
 
 ### Build
@@ -20,7 +16,7 @@ $ go build
 $ ./create-cert.sh
 $ ./slurm-https
 ```
-By default, the server listen on :8443.
+By default, the server listen on `:8443`.
 
 ## API
 
