@@ -2,8 +2,10 @@ sudo: false
 
 language: go
 
-before_script:
-    - export PKG_CONFIG_PATH=/tmp/lib/pkgconfig
+env:
+    - PKG_CONFIG_PATH=/tmp/lib/pkgconfig
+
+install:
     - sh .setup.sh
 
 script:
