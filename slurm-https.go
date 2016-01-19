@@ -1,7 +1,7 @@
 package main
 
 /*
-#cgo LDFLAGS: -lslurm
+#cgo pkg-config: slurm
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -453,7 +453,7 @@ func signal_job_step(w http.ResponseWriter, r *http.Request) {
 	opt := struct {
 		job_id  C.uint32_t
 		step_id C.uint32_t
-		signal  C.uint16_t // XXX
+		signal  C.uint32_t
 	}{}
 
 	obj := make(object_map)
