@@ -810,12 +810,21 @@ func clear_trigger(w http.ResponseWriter, r *http.Request) {
 }
 
 func takeover(w http.ResponseWriter, r *http.Request) {
-	ret := C.slurm_takeover()
+	opt := struct {
+		backup_inx C.int
+	}{}
 
-	if ret != 0 {
-		slurm_error(w, r)
-		return
-	}
+	obj := make(object_map)
+	obj.Add(&opt)
+
+	obj.Run(w, r, func() {
+		ret := C.slurm_takeover(opt.backup_inx)
+
+		if ret != 0 {
+			slurm_error(w, r)
+			return
+		}
+	})
 }
 
 func shutdown(w http.ResponseWriter, r *http.Request) {
@@ -1057,7 +1066,7 @@ func lookup_job(w http.ResponseWriter, r *http.Request) {
 	obj.Add(&opt)
 
 	obj.Run(w, r, func() {
-		var slres *C.job_alloc_info_response_msg_t
+		var slres *C.resource_allocation_response_msg_t
 
 		ret := C.slurm_allocation_lookup(opt.job_id, &slres)
 
@@ -1068,7 +1077,7 @@ func lookup_job(w http.ResponseWriter, r *http.Request) {
 
 		res := get_res(slres)
 
-		C.slurm_free_job_alloc_info_response_msg(slres)
+		C.slurm_free_resource_allocation_response_msg(slres)
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(&res)
