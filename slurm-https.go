@@ -1119,7 +1119,7 @@ func load_ctl_conf(w http.ResponseWriter, r *http.Request) {
 	obj.Add(&opt)
 
 	obj.Run(w, r, func() {
-		var slres *C.slurm_ctl_conf_t
+		var slres *C.slurm_conf_t
 
 		ret := C.slurm_load_ctl_conf(opt.update_time, &slres)
 
