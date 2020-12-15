@@ -1,0 +1,5 @@
+Name: slurm
+Description: Slurm
+Version: 1.0.0
+Cflags: -I/usr/include/slurm
+Libs: -lslurm
