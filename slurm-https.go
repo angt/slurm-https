@@ -20,6 +20,10 @@ size_t sluw_len_##T (T *l) { size_t i=0; if (l) while (l[i]!=S) i++; return i;}
 SLUW_LIST(uint32_t,0)
 SLUW_LIST(int32_t,-1)
 SLUW_LIST(chars,NULL)
+
+#if SLURM_VERSION_NUMBER < SLURM_VERSION_NUM(20,11,0)
+	typedef struct slurm_ctl_conf slurm_conf_t;
+#endif
 */
 import (
 	"C"
