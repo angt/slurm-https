@@ -24,12 +24,6 @@ SLUW_LIST(chars,NULL)
 #if SLURM_VERSION_NUMBER < SLURM_VERSION_NUM(20,11,0)
 	typedef struct slurm_ctl_conf slurm_conf_t;
 #endif
-
-int slurm_load_ctl_conf_wrapper(time_t update_time,
-                               slurm_conf_t **slurm_ctl_conf_ptr) {
-	return slurm_load_ctl_conf(update_time, slurm_ctl_conf_ptr);
-}
-
 */
 import (
 	"C"
@@ -1131,7 +1125,7 @@ func load_ctl_conf(w http.ResponseWriter, r *http.Request) {
 	obj.Run(w, r, func() {
 		var slres *C.slurm_conf_t
 
-		ret := C.slurm_load_ctl_conf_wrapper(opt.update_time, &slres)
+		ret := C.slurm_load_ctl_conf(opt.update_time, &slres)
 
 		if ret != 0 {
 			slurm_error(w, r)
